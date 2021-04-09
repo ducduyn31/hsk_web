@@ -7,58 +7,7 @@ import { appColor, headerHeight, spacer } from 'modules/theme';
 
 import { logOut } from 'actions';
 
-import Icon from 'components/Icon';
-import Logo from 'components/Logo';
-
-const HeaderWrapper = styled.header`
-  background-color: #113740;
-  height: ${headerHeight}px;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 200;
-
-  &:before {
-    background-color: ${appColor};
-    bottom: 0;
-    content: '';
-    height: 0.2rem;
-    left: 0;
-    position: absolute;
-    right: 0;
-  }
-`;
-
-const HeaderContainer = styled(Container)`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  justify-content: space-between;
-  padding-bottom: ${spacer(2)};
-  padding-top: ${spacer(2)};
-`;
-
-const Logout = styled.button`
-  align-items: center;
-  color: #fff;
-  display: flex;
-  font-size: 1.3rem;
-  padding: ${spacer(2)};
-
-  ${responsive({ lg: { fontSize: '1.6rem' } })}; /* stylelint-disable-line */
-
-  &.active {
-    color: #fff;
-  }
-
-  span {
-    display: inline-block;
-    margin-right: 0.4rem;
-    text-transform: uppercase;
-  }
-`;
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -68,14 +17,43 @@ export default function Header() {
   };
 
   return (
-    <HeaderWrapper data-testid="Header">
-      <HeaderContainer>
-        <Logo />
-        <Logout onClick={handleClickLogout}>
-          <span>logout</span>
-          <Icon name="sign-out" width={16} />
-        </Logout>
-      </HeaderContainer>
-    </HeaderWrapper>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          Photos
+        </Typography>
+        {auth && (
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+            </Menu>
+          </div>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }

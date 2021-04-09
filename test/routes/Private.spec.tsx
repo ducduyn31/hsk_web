@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Private from 'routes/Private';
+import ChatRoom from 'routes/ChatRoom';
 
 import { render, screen } from 'test-utils';
 
-describe('Private', () => {
+describe('ChatRoom', () => {
   it('should render properly', () => {
-    render(<Private />);
+    render(<ChatRoom />);
 
-    expect(screen.getByTestId('Private')).toMatchSnapshot();
+    expect(screen.getByTestId('ChatRoom')).toMatchSnapshot();
   });
 });

@@ -25,11 +25,6 @@ export interface AppState {
   alerts: AlertData[];
 }
 
-export interface GitHubState {
-  topics: Record<string, Topic>;
-  query: string;
-}
-
 export interface UserState {
   isAuthenticated: boolean;
   status: ValueOf<Status>;
@@ -37,7 +32,6 @@ export interface UserState {
 
 export interface StoreState {
   app: AppState;
-  github: GitHubState;
   user: UserState;
 }
 

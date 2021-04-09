@@ -14,16 +14,13 @@ import config from 'config';
 
 import { showAlert } from 'actions';
 
+import ChatRoom from 'routes/ChatRoom';
 import Home from 'routes/Home';
 import NotFound from 'routes/NotFound';
-import Private from 'routes/Private';
 
 import RoutePrivate from 'containers/RoutePrivate';
 import RoutePublic from 'containers/RoutePublic';
 import SystemAlerts from 'containers/SystemAlerts';
-
-import Footer from 'components/Footer';
-import Header from 'components/Header';
 
 import { StoreState, UserState } from 'types';
 
@@ -69,7 +66,6 @@ function Root() {
               rel="stylesheet"
             />
           </Helmet>
-          {isAuthenticated && <Header />}
           <Main isAuthenticated={isAuthenticated}>
             <Switch>
               <RoutePublic
@@ -79,11 +75,14 @@ function Root() {
                 to="/private"
                 component={Home}
               />
-              <RoutePrivate isAuthenticated={isAuthenticated} path="/private" component={Private} />
+              <RoutePrivate
+                isAuthenticated={isAuthenticated}
+                path="/private"
+                component={ChatRoom}
+              />
               <Route component={NotFound} />
             </Switch>
           </Main>
-          <Footer />
           <SystemAlerts />
         </AppWrapper>
       </ThemeProvider>

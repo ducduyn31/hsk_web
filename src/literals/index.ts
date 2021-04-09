@@ -3,9 +3,6 @@ import { keyMirror } from 'modules/helpers';
 import { Status } from 'types';
 
 export const ActionTypes = keyMirror({
-  GITHUB_GET_REPOS_REQUEST: undefined,
-  GITHUB_GET_REPOS_SUCCESS: undefined,
-  GITHUB_GET_REPOS_FAILURE: undefined,
   HIDE_ALERT: undefined,
   SHOW_ALERT: undefined,
   USER_LOGIN_REQUEST: undefined,

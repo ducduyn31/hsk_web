@@ -18,6 +18,8 @@
     "ES6"
   ],
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "history": "^4.10.1",
     "immer": "^8.0.0",
     "is-lite": "^0.8.0",
